@@ -3,7 +3,8 @@ import { useContext, createContext, useState } from "react";
 const BudgetContext = createContext();
 
 function BudgetProvider({ children }) {
-  const [budgetMode, setBudgetMode] = useState(false);
+  /*   const [budgetMode, setBudgetMode] = useState(false); */
+  const [budgetMode, setBudgetMode] = useState(null);
 
   const contextValue = { budgetMode, setBudgetMode };
 

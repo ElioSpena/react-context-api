@@ -49,14 +49,21 @@ export default function Header() {
               </li>
 
               <li className="nav-item">
-                <button
+                {/*      <button
                   className={`btn ${
                     budgetMode ? "btn-success" : "btn-outline-secondary"
                   }`}
                   onClick={() => setBudgetMode(!budgetMode)}
                 >
-                  BudgetMode
-                </button>
+                  {budgetMode ? "Budget Mode On" : "Budget Mode Off"}
+                </button> */}
+                <input
+                  placeholder="filtra per prezzo..."
+                  type="number"
+                  className="form-control"
+                  value={budgetMode}
+                  onChange={(event) => setBudgetMode(event.target.value)}
+                />
               </li>
             </ul>
           </div>

@@ -11,7 +11,9 @@ export default function ProductsPage() {
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((resp) => {
       if (budgetMode) {
-        setProducts(resp.data.filter((product) => product.price <= 30));
+        setProducts(
+          resp.data.filter((product) => product.price <= parseInt(budgetMode))
+        );
       } else {
         setProducts(resp.data);
       }
