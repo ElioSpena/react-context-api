@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useBudget } from "../context/BudgetContext";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [hover, setHover] = useState(false);
+  const { budgetMode } = useBudget();
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((resp) => {
-      setProducts(resp.data);
+      if (budgetMode) {
+        setProducts(resp.data.filter((product) => product.price <= 30));
+      } else {
+        setProducts(resp.data);
+      }
     });
-  }, []);
+  }, [budgetMode]);
 
   return (
     <section className="py-5 container">

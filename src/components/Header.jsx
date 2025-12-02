@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { useBudget } from "../context/BudgetContext";
 
 export default function Header() {
+  const { budgetMode, setBudgetMode } = useBudget();
   return (
     <header
       data-bs-theme="dark"
@@ -44,6 +46,15 @@ export default function Header() {
                 <NavLink className="nav-link" to="/products">
                   Products
                 </NavLink>
+              </li>
+
+              <li className="nav-item">
+                <button
+                  className="btn btn-outline-light"
+                  onClick={() => setBudgetMode(!budgetMode)}
+                >
+                  BudgetMode
+                </button>
               </li>
             </ul>
           </div>

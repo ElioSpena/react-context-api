@@ -5,22 +5,25 @@ import ProductsPage from "./pages/ProductsPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ProductsDetails from "./pages/ProductsDetails";
 import PageNotFound from "./pages/PageNotFound";
+import { BudgetProvider } from "./context/BudgetContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayouts />}>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/products">
-            <Route path="" element={<ProductsPage />} />
-            <Route path=":id" element={<ProductsDetails />} />
+    <BudgetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayouts />}>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/products">
+              <Route path="" element={<ProductsPage />} />
+              <Route path=":id" element={<ProductsDetails />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </BudgetProvider>
   );
 }
 
