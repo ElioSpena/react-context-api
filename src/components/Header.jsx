@@ -50,7 +50,9 @@ export default function Header() {
 
               <li className="nav-item">
                 <button
-                  className="btn btn-outline-light"
+                  className={`btn ${
+                    budgetMode ? "btn-success" : "btn-outline-secondary"
+                  }`}
                   onClick={() => setBudgetMode(!budgetMode)}
                 >
                   BudgetMode
