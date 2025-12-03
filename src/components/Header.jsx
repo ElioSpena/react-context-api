@@ -53,7 +53,7 @@ export default function Header() {
                   className={`btn ${
                     budgetMode ? "btn-success" : "btn-outline-secondary"
                   }`}
-                  onClick={() => setBudgetMode(!budgetMode)}
+                  onClick={() => setBudgetMode((prev)=>!prev)} 
                 >
                   {budgetMode ? "Budget Mode On" : "Budget Mode Off"}
                 </button> */}

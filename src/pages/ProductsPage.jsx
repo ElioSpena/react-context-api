@@ -10,21 +10,21 @@ export default function ProductsPage() {
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((resp) => {
-      if (budgetMode) {
-        setProducts(
-          resp.data.filter((product) => product.price <= parseInt(budgetMode))
-        );
-      } else {
-        setProducts(resp.data);
-      }
+      setProducts(resp.data);
     });
-  }, [budgetMode]);
+  }, []);
+
+  const filteredProduct = budgetMode
+    ? products.filter((curProd) => {
+        return curProd.price <= budgetMode;
+      })
+    : products;
 
   return (
     <section className="py-5 container">
       <h1 className="py-3 text-light text-center">Products</h1>
       <ul className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 list-unstyled">
-        {products.map((curProd) => (
+        {filteredProduct.map((curProd) => (
           <li key={curProd.id} className="col">
             <Link
               to={`/products/${curProd.id}`}
